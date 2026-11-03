@@ -41,8 +41,8 @@ datagrams, one truncated. Expected: 7 published, 1 dropped by lint, 7 received,
 key, to show nothing was retained (measured only when the credential may read
 the audit tail; otherwise stated as unmeasured).
 
-This rung needs a goatnet: pass the goat context that holds your fabric
-credential.
+This rung needs a goatnet you have access to: pass the goat context that
+holds your fabric credential on it.
 
 ```bash
 bin/hello-feed 1-mirror --env <context>

@@ -10,7 +10,7 @@ matching digest and whether the digest sequence has gaps.
 Uses two `goat sub --follow --uuid` processes (--uuid so the printed key is
 the canonical anchor form, not the display alias). `goat sub` prints a
 binary sample as `<key> hex:<bytes>` and a JSON sample as `<key> <text>`;
-both are parsed here; its "subscribed to" line arrives on stderr, merged.
+both are parsed here; its "listening on" line (older builds: "subscribed to") arrives on stderr, merged.
 Frames are matched to digests by SHA-256, not by arrival order, because the
 two keys are independent DROP streams.
 
@@ -58,7 +58,7 @@ def main():
     opened = {"raw": False, "dig": False}
 
     def on_raw(line):
-        if line.startswith("subscribed to"):
+        if line.startswith(("subscribed to", "listening on")):
             opened["raw"] = True
             return
         if " hex:" in line:
@@ -71,7 +71,7 @@ def main():
                 frames.append(hashlib.sha256(b).hexdigest())
 
     def on_dig(line):
-        if line.startswith("subscribed to"):
+        if line.startswith(("subscribed to", "listening on")):
             opened["dig"] = True
             return
         if line.startswith(dig_key + " "):

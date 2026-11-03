@@ -1,6 +1,8 @@
 # Doing it for real on a goatnet
 
-Every step on this page needs a goatnet and enrolled peers on it.
+Every step on this page needs a goatnet and enrolled peers on it. Any appropriate goatnet
+you have access to works: EFDI if you are onboarded to it, a goatlite you stand up yourself, <!-- oss-allow: operator-approved public example goatnet -->
+or another goatnet you have access to.
 
 ## Rung 0
 
@@ -51,5 +53,5 @@ Every step on this page needs a goatnet and enrolled peers on it.
 
 ## Who to ask
 
-Your goatnet's operators. Send the two mesh addresses, the UDP port and the
+The goatnet's operators. Send the two mesh addresses, the UDP port and the
 goatnet; the ACL question is answered from the declaration.

@@ -50,10 +50,12 @@ bin/hello-feed 2-decode                 # offline, ~10 s
 Rungs 0 and 2 run on a laptop with no goatnet; CI runs exactly these. Rung 1 and
 `2-decode --publish` need a goatnet: the `goat` CLI (built from
 [`usareur-af/goatcore`](https://github.com/usareur-af/goatcore)) with a fabric
-credential collected into a context (`goat context ls`). If you do not have a
-goatnet, goatcore's quickstart
-[`docs/tutorials/00-goatlite.md`](https://github.com/usareur-af/goatcore/blob/main/docs/tutorials/00-goatlite.md)
-stands one up on one box.
+credential collected into a context (`goat context ls`). Any appropriate goatnet you
+have access to works:
+EFDI, the shared sandbox goatnet that partners are onboarded to (if you are onboarded to it); <!-- oss-allow: operator-approved public example goatnet -->
+a goatlite you stand up yourself on one box (goatcore's quickstart
+[`docs/tutorials/00-goatlite.md`](https://github.com/usareur-af/goatcore/blob/main/docs/tutorials/00-goatlite.md)); or another
+goatnet you have access to.
 
 ```bash
 bin/hello-feed 1-mirror --env <context>             # live, ~2 min (one goat pub per frame, on purpose slow)

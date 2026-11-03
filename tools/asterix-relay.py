@@ -17,7 +17,7 @@ that fails is counted and NOT forwarded, so a corrupt frame cannot reach the
 receiver looking like a real one.
 
 Uses `goat sub --follow --uuid`: goat prints a binary sample as
-`<key> hex:<bytes>`, and its "subscribed to" line arrives on stderr (merged).
+`<key> hex:<bytes>`, and its "listening on" line (older builds: "subscribed to") arrives on stderr (merged).
 Demo simplification: one subprocess, line-oriented; a production relay holds
 one zenoh session with a declared subscriber. The lint and the drop rule are
 the part to copy.
@@ -74,7 +74,7 @@ def main():
     try:
         for line in lines:
             line = line.rstrip("\n")
-            if line.startswith("subscribed to"):
+            if line.startswith(("subscribed to", "listening on")):
                 print(f"relay: {line}", file=sys.stderr)
                 if a.ready_file:
                     open(a.ready_file, "w").close()

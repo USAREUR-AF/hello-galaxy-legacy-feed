@@ -60,6 +60,10 @@ hf_assert_contains "the north marker was recognised, not forced into a track" "$
 hf_assert_contains "no record failed schema validation" "$OUT" "0 record(s) invalid"
 if [ "$PUBLISH" = 1 ]; then
   hf_assert_contains "every published record was confirmed landed" "$OUT" "0 not confirmed"
-  hf_assert_contains "a stored record reads back" "$BACK" "goat.geo.track.v1"
+  if printf '%s' "$BACK" | grep -q "operator-gated"; then
+    printf '    SKIP a stored record reads back (reading stored history needs an operator key on this goatnet)\n'
+  else
+    hf_assert_contains "a stored record reads back" "$BACK" "goat.geo.track.v1"
+  fi
 fi
 hf_done
