@@ -1,0 +1,46 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-and-offline-rungs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: shellcheck the scripts
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck
+          # SC1090/SC1091: drivers source the lib at runtime. SC2034: cross-file globals.
+          shellcheck -e SC1090,SC1091,SC2034 lib/hello-feed.sh rungs/*/run.sh bin/hello-feed
+
+      - name: every rung has a README and an executable run.sh
+        run: |
+          rc=0
+          for d in rungs/*/; do
+            [ -f "$d/README.md" ] || { echo "missing README: $d"; rc=1; }
+            [ -x "$d/run.sh" ]   || { echo "not executable: $d/run.sh"; rc=1; }
+            bash -n "$d/run.sh"  || { echo "syntax error: $d/run.sh"; rc=1; }
+          done
+          for f in tools/*.py; do [ -x "$f" ] || { echo "not executable: $f"; rc=1; }; done
+          exit $rc
+
+      - name: python compiles
+        run: |
+          rc=0
+          for f in $(git ls-files '*.py'); do python3 -m py_compile "$f" || rc=1; done
+          exit $rc
+
+      - name: install the laptop dependencies
+        run: python3 -m pip install --quiet -r requirements.txt
+
+      - name: offline tests — codec, shared lint vectors, refusal by name, schema
+        run: python3 tests/test_asterix.py
+
+      - name: rung 0 — carry (loopback)
+        run: NO_COLOR=1 bin/hello-feed 0-carry
+
+      - name: rung 2 — decode (offline)
+        run: NO_COLOR=1 bin/hello-feed 2-decode

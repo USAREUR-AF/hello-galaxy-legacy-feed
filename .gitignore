@@ -1,0 +1,13 @@
+# runtime state written by the rungs — never committed
+.run/
+*.log
+*.jsonl
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# os noise
+.DS_Store

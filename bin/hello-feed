@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# hello-feed — run a legacy-feed rung.
+#
+#   bin/hello-feed <rung> [--env <context>] [args...]
+#   bin/hello-feed list
+#   bin/hello-feed all [--env ...]      run rungs 0, 1, 2 in order
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+RUNGS="$ROOT/rungs"
+usage() {
+  cat <<USAGE
+hello-galaxy: legacy feed carriage — a sensor that speaks ASTERIX arrives on a goatnet
+
+usage:
+  bin/hello-feed <rung> [--env <context>] [args...]
+  bin/hello-feed list
+  bin/hello-feed all  [--env ...]
+
+rungs (docs/00-which-rung.md says which one you need):
+USAGE
+  for d in "$RUNGS"/*/; do
+    name="$(basename "$d")"; title="$(sed -n 's/^# *//p' "$d/README.md" 2>/dev/null | head -1)"
+    printf '  %-12s %s\n' "$name" "$title"
+  done
+  cat <<USAGE
+
+offline:  0-carry and 2-decode run on a laptop with no fabric.
+live:     1-mirror and 2-decode --publish need a goatnet: --env <goat context with a fabric credential>.
+USAGE
+}
+resolve() {
+  local q="$1" m
+  [ -d "$RUNGS/$q" ] && { echo "$q"; return 0; }
+  for d in "$RUNGS"/*/; do
+    m="$(basename "$d")"
+    case "$m" in "$q"-*|*"$q"*) echo "$m"; return 0 ;; esac
+  done
+  return 1
+}
+[ "$#" -eq 0 ] && { usage; exit 0; }
+case "$1" in
+  -h|--help|help) usage; exit 0 ;;
+  list) for d in "$RUNGS"/*/; do basename "$d"; done; exit 0 ;;
+  all) shift; rc=0; for d in "$RUNGS"/*/; do bash "$d/run.sh" "$@" || rc=1; done; exit $rc ;;
+esac
+name="$(resolve "$1")" || { echo "unknown rung: $1" >&2; usage >&2; exit 2; }
+shift
+exec bash "$RUNGS/$name/run.sh" "$@"
