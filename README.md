@@ -111,3 +111,7 @@ Paths are in [`usareur-af/goatcore`](https://github.com/usareur-af/goatcore).
 | why checks sit at the ends | `docs/design/zenoh-brokerless-consequences.md`: the fabric has no broker, and a denied publish is silent, so nothing in the middle can validate |
 
 Part of the hello-galaxy family of runnable goat demos.
+
+## Licence
+
+`hello-galaxy-legacy-feed` was written by U.S. Federal government employees. In the U.S. it is not subject to copyright and is in the public domain; in countries where copyright is recognized, it is released under the [Apache License 2.0](LICENSE). See [INTENT.md](INTENT.md).
