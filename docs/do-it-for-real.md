@@ -1,7 +1,7 @@
 # Doing it for real on a goatnet
 
 Every step on this page needs a goatnet and enrolled peers on it. Any appropriate goatnet
-you have access to works: EFDI if you are onboarded to it, a goatlite you stand up yourself, <!-- oss-allow: operator-approved public example goatnet -->
+you have access to works: a goatlite you stand up yourself,
 or another goatnet you have access to.
 
 ## Rung 0
