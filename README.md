@@ -1,4 +1,9 @@
-# hello-galaxy: legacy feed carriage
+# hello-galaxy-legacy-feed
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/figures/three-rungs-dark.svg">
+  <img src="docs/figures/three-rungs-light.svg" width="760" alt="A synthetic radar's ASTERIX CAT 034/048 feed goes onto a goatnet three ways: rung 0 carries the datagrams unchanged to one peer with a framing lint and digest log; rung 1 mirrors the same bytes on a volatile stream key with a SHA-256 digest per frame, so any authorized subscriber or a UDP relay can take them; rung 2 decodes them into GeoTrackV1 records on a stored key for goat's map, refusing items it does not implement by name.">
+</picture>
 
 **A sensor that speaks a legacy wire format (here ASTERIX CAT 034/048) arrives on
 a goatnet. What do you need to do with it? Three rungs, each one runnable, each
