@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 572.3" width="880" height="572.3" role="img" aria-label="A synthetic radar's ASTERIX CAT 034/048 feed goes onto a goatnet three ways: rung 0 carries the datagrams unchanged to one peer with a framing lint and digest log; rung 1 mirrors the same bytes on a volatile stream key with a SHA-256 digest per frame, so any authorized subscriber or a UDP relay can take them; rung 2 decodes them into GeoTrackV1 records on a stored key for goat's map, refusing items it does not implement by name."><title>One radar feed, three ways onto a goatnet</title><style>svg{--ink:#e7e9ec; --quiet:#a5acb7; --rule:#30363e; --line:#7b8592; --paper:#121417; --panel:#1a1d21; --accent:#6cc3da; --accent-soft:#14303a; --on-accent:#121417; --good:#6fc480; --good-bg:#1b2e20; --warn:#e2b04e; --warn-bg:#32291a; --info:#86b3ea; --info-bg:#1a2636; --crit:#f08b80; --crit-bg:#3a1f1f; font-family:'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', sans-serif}.t{fill:var(--ink)} .tq{fill:var(--quiet)} .ta{fill:var(--accent)} .tg{fill:var(--good)}
+.tw{fill:var(--warn)} .ti{fill:var(--info)} .tc{fill:var(--crit)} .ton{fill:var(--on-accent)}
+.bx{fill:var(--panel);stroke:var(--line);stroke-width:1.25} .bxa{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+.bxg{fill:var(--good-bg);stroke:var(--good);stroke-width:1.25} .bxc{fill:var(--crit-bg);stroke:var(--crit);stroke-width:1.25}
+.bxw{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.25} .bxi{fill:var(--info-bg);stroke:var(--info);stroke-width:1.25}
+.zone{fill:none;stroke:var(--line);stroke-width:1.25;stroke-dasharray:6 5}
+.ln{stroke:var(--line);stroke-width:1.5;fill:none} .lna{stroke:var(--accent);stroke-width:2.25;fill:none}
+.lng{stroke:var(--good);stroke-width:2;fill:none} .lnc{stroke:var(--crit);stroke-width:2;fill:none;stroke-dasharray:4 4}
+.lni{stroke:var(--info);stroke-width:2;fill:none} .lnr{stroke:var(--rule);stroke-width:1;fill:none}
+.fa{fill:var(--accent)} .fl{fill:var(--line)} .fg{fill:var(--good)} .fc{fill:var(--crit)} .fi{fill:var(--info)}
+.halo{paint-order:stroke fill;stroke:var(--paper);stroke-width:5px;stroke-linejoin:round}</style>
+<text x="24" y="38" class="t" font-size="20" font-weight="700" data-role="note">One radar feed, three ways onto a goatnet</text>
+<text x="24" y="66" class="tq" font-size="15" data-role="note">A synthetic radar sends ASTERIX CAT 034/048 over UDP. Each rung moves the feed further and carries the check</text>
+<text x="24" y="87" class="tq" font-size="15" data-role="note">that belongs to it.</text>
+<rect x="242" y="106" width="30" height="30" rx="15" class="fa"/>
+<text x="257" y="125.6" class="ton" font-size="13" text-anchor="middle" font-weight="700">0</text>
+<text x="278" y="126" class="t" font-size="15" font-weight="700">Rung 0, carry</text>
+<rect x="244" y="141" width="346" height="60" rx="8" class="bxa"/>
+<text x="256" y="168" class="t" font-size="15" font-weight="700">Datagrams, unchanged, peer to peer</text>
+<text x="256" y="187.7" class="tq" font-size="14">offline on loopback, or between two real peers</text>
+<rect x="622" y="141" width="234" height="79.3" rx="8" class="bx"/>
+<text x="634" y="168" class="t" font-size="15" font-weight="700">One receiver</text>
+<text x="634" y="187.7" class="tq" font-size="14">no one else on the goatnet</text>
+<text x="634" y="207" class="tq" font-size="14">sees the feed</text>
+<path d="M592 167L620 167" class="lna"/>
+<path d="M620 167L610 172L610 162z" class="fa"/>
+<text x="246" y="242.3" class="tg" font-size="14" data-role="note">✓ Check: framing lint and a digest log beside the receiver</text>
+<rect x="242" y="259.3" width="30" height="30" rx="15" class="fa"/>
+<text x="257" y="278.9" class="ton" font-size="13" text-anchor="middle" font-weight="700">1</text>
+<text x="278" y="279.3" class="t" font-size="15" font-weight="700">Rung 1, mirror</text>
+<rect x="244" y="294.3" width="346" height="83" rx="8" class="bxa"/>
+<text x="256" y="321.3" class="t" font-size="15" font-weight="700">Same bytes, untouched, on a stream key</text>
+<text x="256" y="340" class="tq" font-size="13" font-family="Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace">volatile/&lt;anchor&gt;/stream/.../raw/v1</text>
+<text x="256" y="364" class="tq" font-size="14">a SHA-256 digest per frame on a sibling key</text>
+<rect x="622" y="294.3" width="234" height="79.3" rx="8" class="bx"/>
+<text x="634" y="321.3" class="t" font-size="15" font-weight="700">Any authorized subscriber</text>
+<text x="634" y="341" class="tq" font-size="14">a relay feeds UDP to a receiver</text>
+<text x="634" y="360.4" class="tq" font-size="14">behind a data diode</text>
+<path d="M592 320.3L620 320.3" class="lna"/>
+<path d="M620 320.3L610 325.3L610 315.3z" class="fa"/>
+<text x="246" y="399.3" class="tg" font-size="14" data-role="note">✓ Check: lint before every put; a refused frame is dropped, never published, and leaves a gap</text>
+<rect x="242" y="416.3" width="30" height="30" rx="15" class="fa"/>
+<text x="257" y="435.9" class="ton" font-size="13" text-anchor="middle" font-weight="700">2</text>
+<text x="278" y="436.3" class="t" font-size="15" font-weight="700">Rung 2, decode</text>
+<rect x="244" y="451.3" width="346" height="83" rx="8" class="bxa"/>
+<text x="256" y="478.3" class="t" font-size="15" font-weight="700">GeoTrackV1 records on a stored key</text>
+<text x="256" y="497" class="tq" font-size="13" font-family="Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace">&lt;anchor&gt;/&lt;system&gt;/geo/track/...</text>
+<text x="256" y="520.9" class="tq" font-size="14">nine items decoded, others refused by name</text>
+<rect x="622" y="451.3" width="234" height="79.3" rx="8" class="bx"/>
+<text x="634" y="478.3" class="t" font-size="15" font-weight="700">goat's map draws them</text>
+<text x="634" y="498" class="tq" font-size="14">the record validates against the</text>
+<text x="634" y="517.3" class="tq" font-size="14">GeoTrackV1 schema</text>
+<path d="M592 477.3L620 477.3" class="lna"/>
+<path d="M620 477.3L610 482.3L610 472.3z" class="fa"/>
+<text x="246" y="556.3" class="tg" font-size="14" data-role="note">✓ Check: JSON-schema validation, and a read-back with --confirm</text>
+<rect x="24" y="267.8" width="184" height="108.7" rx="8" class="bx"/>
+<text x="36" y="294.8" class="t" font-size="15" font-weight="700">Synthetic radar</text>
+<text x="36" y="314.5" class="tq" font-size="14">ASTERIX CAT 034/048</text>
+<text x="36" y="338.8" class="tq" font-size="14">over UDP</text>
+<text x="36" y="363.2" class="tq" font-size="14">SIM bit on every plot</text>
+<path d="M208 322.1L222 322.1" class="ln"/>
+<path d="M222 167L222 477.3" class="ln"/>
+<path d="M222 167L242 167" class="ln"/>
+<path d="M242 167L232 172L232 162z" class="fl"/>
+<path d="M222 320.3L242 320.3" class="ln"/>
+<path d="M242 320.3L232 325.3L232 315.3z" class="fl"/>
+<path d="M222 477.3L242 477.3" class="ln"/>
+<path d="M242 477.3L232 482.3L232 472.3z" class="fl"/>
+</svg>
